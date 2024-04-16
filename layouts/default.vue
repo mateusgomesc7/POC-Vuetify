@@ -12,7 +12,11 @@
 
       <v-btn icon="mdi-magnify" variant="text"></v-btn>
 
-      <v-btn icon="mdi-filter" variant="text"></v-btn>
+      <v-btn
+        icon="mdi-weather-sunny"
+        variant="text"
+        @click="toggleTheme"
+      ></v-btn>
 
       <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
     </v-app-bar>
@@ -56,5 +60,16 @@
 </template>
 
 <script setup lang="ts">
+import { useTheme } from "vuetify";
+
 const drawer = ref(false);
+
+const theme = useTheme();
+
+console.log(theme.global.name.value);
+
+function toggleTheme() {
+  theme.global.name.value =
+    theme.global.name.value === "light" ? "dark" : "light";
+}
 </script>
